@@ -1,7 +1,10 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-// import './App.css'
+import './App.css';
+import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
+import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
+import Navbar from "./components/navbar/navbar.jsx";
 
 const App = () => {
 
@@ -15,7 +18,6 @@ const App = () => {
       img: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
       imgAlt: 'Microsoft logo',
       ContactUs: 'contact@fakecompany.com',
-      companyHistory: 'Founded in 1907 by visionaries in innovation, FakeCompany Inc. has evolved from a small garage operation into a global leader in technology, customer engagement, and AI-driven solutions. With over a century of dedication to excellence, we continue to pave the way for future-forward solutions.',
     },
     {
       name: 'John Smith',
@@ -26,7 +28,6 @@ const App = () => {
       img: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
       imgAlt: 'Apple logo',
       ContactUs: 'support@fakecompany.com',
-      companyHistory: 'Founded in 1907 by visionaries in innovation, FakeCompany Inc. has evolved from a small garage operation into a global leader in technology, customer engagement, and AI-driven solutions. With over a century of dedication to excellence, we continue to pave the way for future-forward solutions.',
     },
     {
       name: 'Emily Chen',
@@ -37,7 +38,6 @@ const App = () => {
       img: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png',
       imgAlt: 'Google logo',
       ContactUs: 'hello@fakecompany.com',
-      companyHistory: 'Founded in 1907 by visionaries in innovation, FakeCompany Inc. has evolved from a small garage operation into a global leader in technology, customer engagement, and AI-driven solutions. With over a century of dedication to excellence, we continue to pave the way for future-forward solutions.',
     },
     {
       name: 'Carlos Ramirez',
@@ -48,7 +48,6 @@ const App = () => {
       img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Logo_of_Twitter.svg',
       imgAlt: 'Twitter logo',
       ContactUs: 'team@fakecompany.com',
-      companyHistory: 'Founded in 1907 by visionaries in innovation, FakeCompany Inc. has evolved from a small garage operation into a global leader in technology, customer engagement, and AI-driven solutions. With over a century of dedication to excellence, we continue to pave the way for future-forward solutions.',
     },
     {
       name: 'Ava Patel',
@@ -59,12 +58,16 @@ const App = () => {
       img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
       imgAlt: 'Netflix logo',
       ContactUs: 'info@fakecompany.com',
-      companyHistory: 'Founded in 1907 by visionaries in innovation, FakeCompany Inc. has evolved from a small garage operation into a global leader in technology, customer engagement, and AI-driven solutions. With over a century of dedication to excellence, we continue to pave the way for future-forward solutions.',
     },
   ];
 
   return (
-    <h1>Hello world!</h1>
+    <>
+      <Navbar />
+      <h1>Hello world!</h1>
+      <CompanyHistory />
+      <ExternalLinks src={employeeProfiles[0].img} alt={employeeProfiles[0].imgAlt} />
+    </>
   );
 };
 

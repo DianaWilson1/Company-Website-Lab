@@ -1,0 +1,7 @@
+.image{
+margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 20px;
+    min-height: 30vh;
+}
