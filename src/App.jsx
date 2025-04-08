@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
 import CompanyInformation from "./components/contactUs/companyInformation.jsx";
@@ -60,6 +61,27 @@ const App = () => {
       ContactUs: 'info@fakecompany.com',
     },
   ];
+  // mport React, { useState } from 'react';
+  //   function ToggleInfo() {
+  //     const [isVisible, setIsVisible] = useState(false);
+  //     const toggleInfo = () => {
+  //       setIsVisible(!isVisible);
+  //     };
+  //     return (
+  //       <div className="p-4">
+  //         <button onClick={toggleInfo} className="bg-blue-500 text-white px-4 py-2 rounded">
+  //           {isVisible ? 'Hide Info' : 'Show Info'}
+  //         </button>
+  //         {isVisible && (
+  //           <div className="mt-4 bg-gray-100 p-4 rounded shadow">
+  //             <p>This is the information that
+  const [isVisible, setIsVisible] = useState(true); // using boolean
+
+  const toggleVisibility = () => {
+    setIsVisible(prev => !prev);
+  };
+
+
 
   return (
     <div className="app-container">
@@ -76,34 +98,38 @@ const App = () => {
           helping them stay ahead in an ever-evolving world.
         </p>
       </main>
+      <button onClick={toggleVisibility}>Invisible</button>
+      <div className='body' style={{ display: isVisible }}>
 
-      <section className="CompanyHistory">
-        <CompanyHistory />
-        <div className="image-grid">
+
+        <section className="CompanyHistory">
+          <CompanyHistory />
+          <div className="image-grid">
+            {employeeProfiles.map((profile, index) => (
+              <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+            ))}
+          </div>
+        </section>
+
+        <section className="EmployData">
           {employeeProfiles.map((profile, index) => (
-            <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+            <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
           ))}
-        </div>
-      </section>
+        </section>
 
-      <section className="EmployData">
-        {employeeProfiles.map((profile, index) => (
-          <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
-        ))}
-      </section>
+        <section className="PastWork">
+          {employeeProfiles.map((profile, index) => (
+            <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
+          ))}
+        </section>
 
-      <section className="PastWork">
-        {employeeProfiles.map((profile, index) => (
-          <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
-        ))}
-      </section>
-
-      <section className="CompanyInformation">
-        <CompanyInformation />
-        {employeeProfiles.map((profile, index) => (
-          <ContactUs key={index} name={profile.name} email={profile.email} />
-        ))}
-      </section>
+        <section className="CompanyInformation">
+          <CompanyInformation />
+          {employeeProfiles.map((profile, index) => (
+            <ContactUs key={index} name={profile.name} email={profile.email} />
+          ))}
+        </section>
+      </div>
     </div>
   );
 };
