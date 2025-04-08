@@ -26,7 +26,7 @@ const App = () => {
       email: 'john.smith@example.com',
       employmentHistory: 'UX Designer at PixelPerfect, Front-End Dev at UIFlow',
       hobbies: ['Sketching', 'Cycling', 'Indie Film Making'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
       imgAlt: 'Apple logo',
     },
     {
@@ -44,7 +44,7 @@ const App = () => {
       email: 'carlos.ramirez@example.com',
       employmentHistory: 'Data Analyst at InfoCore, BI Specialist at Dashlytics',
       hobbies: ['Soccer', 'Drone Racing', 'Podcasting'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Logo_of_Twitter.svg',
       imgAlt: 'Twitter logo',
     },
     {
@@ -53,7 +53,7 @@ const App = () => {
       email: 'ava.patel@example.com',
       employmentHistory: 'QA Engineer at TestGuru, DevOps Specialist at CloudNest',
       hobbies: ['Yoga', 'Gardening', 'Writing Fiction'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
       imgAlt: 'Netflix logo',
     },
   ];
@@ -76,8 +76,11 @@ const App = () => {
     <div className="app-container">
       <Navbar onNavigate={handleNavigation} />
 
+      {/* --- Conditionally Rendered Content Sections --- */}
+
+      {/* Home Section - Uses <section> for consistent styling */}
       {activeSection === 'home' && (
-        <main>
+        <section className="home-section">
           <h3>Welcome to FutureWave Technologies Inc.</h3>
           <p>
             FutureWave Technologies Inc. is a forward-thinking software solutions company
@@ -87,9 +90,10 @@ const App = () => {
             organizations through smart, seamless, and future-ready technology —
             helping them stay ahead in an ever-evolving world.
           </p>
-        </main>
+        </section>
       )}
 
+      {/* Company History Section */}
       {activeSection === 'companyHistory' && (
         <section className="CompanyHistory">
            <h2>Company History</h2>
@@ -97,9 +101,10 @@ const App = () => {
         </section>
       )}
 
+      {/* Staff Section */}
       {activeSection === 'staff' && (
         <section className="EmployData">
-          
+          <h2>Our Staff</h2>
           {employeeProfiles.map((profile, index) => (
             <EmployData
               key={index}
@@ -111,6 +116,7 @@ const App = () => {
         </section>
       )}
 
+      {/* Past Work Section */}
       {activeSection === 'pastWork' && (
         <section className="PastWork">
           <h2>Past Work Examples</h2>
@@ -124,6 +130,7 @@ const App = () => {
         </section>
       )}
 
+      {/* Contact Us Section */}
       {activeSection === 'contact' && (
         <section className="CompanyInformation">
           <h2>Contact Information</h2>
@@ -131,6 +138,7 @@ const App = () => {
         </section>
       )}
 
+      {/* External Links Section */}
       {activeSection === 'externalLinks' && (
         <section className="external-links-section">
           <h2>External Links / Partners</h2>
