@@ -26,7 +26,7 @@ const App = () => {
       email: 'john.smith@example.com',
       employmentHistory: 'UX Designer at PixelPerfect, Front-End Dev at UIFlow',
       hobbies: ['Sketching', 'Cycling', 'Indie Film Making'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png',
       imgAlt: 'Apple logo',
     },
     {
@@ -44,7 +44,7 @@ const App = () => {
       email: 'carlos.ramirez@example.com',
       employmentHistory: 'Data Analyst at InfoCore, BI Specialist at Dashlytics',
       hobbies: ['Soccer', 'Drone Racing', 'Podcasting'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Logo_of_Twitter.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
       imgAlt: 'Twitter logo',
     },
     {
@@ -53,7 +53,7 @@ const App = () => {
       email: 'ava.patel@example.com',
       employmentHistory: 'QA Engineer at TestGuru, DevOps Specialist at CloudNest',
       hobbies: ['Yoga', 'Gardening', 'Writing Fiction'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg',
       imgAlt: 'Netflix logo',
     },
   ];
