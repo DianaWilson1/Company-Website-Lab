@@ -1,20 +1,31 @@
 import React from "react";
 const CompanyInformation = () => {
   return (
-    <> <div>
-      <h3>Contact as for any addition or help</h3>
+    <> 
+    <div>
       <h4>FutureWave Technologies Inc.</h4>
-      <p>8200 Horizon Parkway, Suite 300
+      <ul>
+        <li>
+            <p>
+        8200 Horizon Parkway, Suite 300
         San Ventura, CA 90210
         United States
-
-        Phone:
+          </p>
+    </li>
+    <li>
+<p>
+Phone:
         📞 (555) 867-5309
 
         Email:
         📧 contact@futurewavetech.com
 
         Website:
+</p>
+</li>
+<li>
+<p>
+      
         🌐 www.futurewavetech.com
 
         Business Hours:
@@ -28,7 +39,10 @@ const CompanyInformation = () => {
 
         Twitter/X: twitter.com/futurewavetech
 
-        Instagram: instagram.com/futurewavetech</p>
+        Instagram: instagram.com/futurewavetech
+    </p>
+    </li>
+    </ul>
 
     </div >  </>
   )

@@ -78,7 +78,6 @@ const App = () => {
 
       {/* --- Conditionally Rendered Content Sections --- */}
 
-      {/* Home Section - Uses <section> for consistent styling */}
       {activeSection === 'home' && (
         <section className="home-section">
           <h3>Welcome to FutureWave Technologies Inc.</h3>
@@ -93,7 +92,6 @@ const App = () => {
         </section>
       )}
 
-      {/* Company History Section */}
       {activeSection === 'companyHistory' && (
         <section className="CompanyHistory">
            <h2>Company History</h2>
@@ -101,36 +99,38 @@ const App = () => {
         </section>
       )}
 
-      {/* Staff Section */}
       {activeSection === 'staff' && (
-        <section className="EmployData">
+        <section className="staff-section-container">
           <h2>Our Staff</h2>
-          {employeeProfiles.map((profile, index) => (
-            <EmployData
-              key={index}
-              name={profile.name}
-              email={profile.email}
-              hobbies={profile.hobbies}
-            />
-          ))}
+          <div className="EmployData">
+            {employeeProfiles.map((profile, index) => (
+              <EmployData
+                key={index}
+                name={profile.name}
+                email={profile.email}
+                hobbies={profile.hobbies}
+              />
+            ))}
+          </div>
         </section>
       )}
 
-      {/* Past Work Section */}
+      {/* Past Work Section - Added wrapper div for flex layout */}
       {activeSection === 'pastWork' && (
         <section className="PastWork">
           <h2>Past Work Examples</h2>
-          {employeeProfiles.map((profile, index) => (
-            <PastWork
-              key={index}
-              name={profile.name}
-              employmentHistory={profile.employmentHistory}
-            />
-          ))}
+          <div className="past-work-container">
+            {employeeProfiles.map((profile, index) => (
+              <PastWork
+                key={index}
+                name={profile.name}
+                employmentHistory={profile.employmentHistory}
+              />
+            ))}
+          </div>
         </section>
       )}
 
-      {/* Contact Us Section */}
       {activeSection === 'contact' && (
         <section className="CompanyInformation">
           <h2>Contact Information</h2>
@@ -138,7 +138,6 @@ const App = () => {
         </section>
       )}
 
-      {/* External Links Section */}
       {activeSection === 'externalLinks' && (
         <section className="external-links-section">
           <h2>External Links / Partners</h2>
