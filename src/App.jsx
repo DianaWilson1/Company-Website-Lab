@@ -76,7 +76,7 @@ const App = () => {
     <div className="app-container">
       <Navbar onNavigate={handleNavigation} />
 
-      {/* --- Conditionally Rendered Content Sections --- */}
+    
 
       {activeSection === 'home' && (
         <section className="home-section">
@@ -115,7 +115,7 @@ const App = () => {
         </section>
       )}
 
-      {/* Past Work Section - Added wrapper div for flex layout */}
+  
       {activeSection === 'pastWork' && (
         <section className="PastWork">
           <h2>Past Work Examples</h2>
