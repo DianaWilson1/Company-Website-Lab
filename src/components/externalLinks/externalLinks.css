@@ -1,7 +1,21 @@
-.image{
-margin: 0;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px;
+  padding: 5px;
+  justify-items: center;
+}
+
+.image {
   display: flex;
-  place-items: center;
-  min-width: 20px;
-    min-height: 30vh;
+  align-items: center;
+  justify-content: center;
+  min-width: 5px;
+  min-height: 10vh;
+}
+
+.image img {
+  max-width: 30%;
+  height: auto;
+  object-fit: contain;
 }

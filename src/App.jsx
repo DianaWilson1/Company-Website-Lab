@@ -1,10 +1,12 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
+
 import './App.css';
 import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
 import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
 import Navbar from "./components/navbar/navbar.jsx";
+import PastWork from './components/pastWork/pastWork.jsx';
 
 const App = () => {
 
@@ -66,7 +68,19 @@ const App = () => {
       <Navbar />
       <h1>Hello world!</h1>
       <CompanyHistory />
-      <ExternalLinks src={employeeProfiles[0].img} alt={employeeProfiles[0].imgAlt} />
+      <div className="image-grid">
+        {employeeProfiles.map((profile, index) => (
+          <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+        ))}
+      </div>
+      <div>
+        {employeeProfiles.map((profile, index) => (
+          <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
+        ))}
+
+
+      </div>
+
     </>
   );
 };

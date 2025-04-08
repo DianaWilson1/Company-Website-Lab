@@ -1,8 +1,7 @@
 import React from "react";
-import './externalLinks.css';
-const ExternalLinks = ({ src, alt }) => {
-  return <div className="image">
-    <img src={src} alt={alt} />
-  </div >
+
+const ProfileImage = ({ src, alt }) => {
+  return <img src={src} alt={alt} className="profile-image" />;
 };
-export default ExternalLinks
+
+export default ProfileImage;
