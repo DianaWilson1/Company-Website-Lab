@@ -7,7 +7,6 @@ import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
 import Navbar from "./components/navbar/navbar.jsx";
 import PastWork from './components/pastWork/pastWork.jsx';
 import EmployData from './components/staff/staff.jsx';
-
 const App = () => {
   const employeeProfiles = [
     {
@@ -61,32 +60,26 @@ const App = () => {
       ContactUs: 'info@fakecompany.com',
     },
   ];
-  // mport React, { useState } from 'react';
-  //   function ToggleInfo() {
-  //     const [isVisible, setIsVisible] = useState(false);
-  //     const toggleInfo = () => {
-  //       setIsVisible(!isVisible);
-  //     };
-  //     return (
-  //       <div className="p-4">
-  //         <button onClick={toggleInfo} className="bg-blue-500 text-white px-4 py-2 rounded">
-  //           {isVisible ? 'Hide Info' : 'Show Info'}
-  //         </button>
-  //         {isVisible && (
-  //           <div className="mt-4 bg-gray-100 p-4 rounded shadow">
-  //             <p>This is the information that
-  const [isVisible, setIsVisible] = useState(true); // using boolean
-
+  // State to control the visibility of the 'body' div
+  const [isVisible, setIsVisible] = useState(true); // Start with the div visible
+  // Function to toggle the visibility state
   const toggleVisibility = () => {
-    setIsVisible(prev => !prev);
+    setIsVisible(prevIsVisible => !prevIsVisible); // Toggle the boolean value
   };
+  // src/App.jsx
 
+  // const handleSubmit = (event) => {
+  //   // Prevent default event behavior
+  //   event.preventDefault();
+  //   console.log('We no longer navigate away from this page');
+  // };
 
-
+  // const handleChange = (event) => {
+  //   setCityInput(event.target.value);
+  // };
   return (
     <div className="app-container">
       <Navbar />
-
       <main>
         <h3>Welcome to FutureWave Technologies Inc.</h3>
         <p>
@@ -98,10 +91,12 @@ const App = () => {
           helping them stay ahead in an ever-evolving world.
         </p>
       </main>
-      <button onClick={toggleVisibility}>Invisible</button>
-      <div className='body' style={{ display: isVisible }}>
-
-
+      {/* Button to toggle visibility, with dynamic text */}
+      <button onClick={toggleVisibility}>
+        {isVisible ? 'Hide Content' : 'Show Content'}
+      </button>
+      {/* The div to be toggled. Use conditional styling for display */}
+      <div className='body' style={{ display: isVisible ? 'block' : 'none' }}>
         <section className="CompanyHistory">
           <CompanyHistory />
           <div className="image-grid">
@@ -110,19 +105,16 @@ const App = () => {
             ))}
           </div>
         </section>
-
         <section className="EmployData">
           {employeeProfiles.map((profile, index) => (
             <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
           ))}
         </section>
-
         <section className="PastWork">
           {employeeProfiles.map((profile, index) => (
             <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
           ))}
         </section>
-
         <section className="CompanyInformation">
           <CompanyInformation />
           {employeeProfiles.map((profile, index) => (
@@ -133,5 +125,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
