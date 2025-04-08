@@ -2,14 +2,13 @@ import React from "react";
 
 const PastWork = ({ name, employmentHistory }) => {
   return <>
-    <h4>Employ History of {name}</h4 >
+  <div>
     <ul>
-      <li>
-        <p>
-          <span>{employmentHistory}</span>
-        </p>
-      </li>
-    </ul>
+      <p>
+      <span><h4>{name}:</h4> </span><span>{employmentHistory}</span>
+      </p>
+      </ul>
+    </div>
   </>
 };
 

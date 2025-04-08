@@ -1,15 +1,16 @@
 // src/App.jsx
 import { useState } from 'react';
 import './App.css';
+
 import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
 import CompanyInformation from "./components/contactUs/companyInformation.jsx";
 import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
 import Navbar from "./components/navbar/navbar.jsx";
 import PastWork from './components/pastWork/pastWork.jsx';
 import EmployData from './components/staff/staff.jsx';
+
 const App = () => {
   const employeeProfiles = [
-    // Keep your employeeProfiles array as is
     {
       name: 'Jane Doe',
       address: '123 Innovation Way, San Francisco, CA 94107',
@@ -18,7 +19,6 @@ const App = () => {
       hobbies: ['Hiking', 'Photography', 'Board Games'],
       img: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
       imgAlt: 'Microsoft logo',
-      ContactUs: 'contact@fakecompany.com',
     },
     {
       name: 'John Smith',
@@ -28,7 +28,6 @@ const App = () => {
       hobbies: ['Sketching', 'Cycling', 'Indie Film Making'],
       img: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
       imgAlt: 'Apple logo',
-      ContactUs: 'support@fakecompany.com',
     },
     {
       name: 'Emily Chen',
@@ -38,7 +37,6 @@ const App = () => {
       hobbies: ['Cooking', '3D Printing', 'Travel Blogging'],
       img: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png',
       imgAlt: 'Google logo',
-      ContactUs: 'hello@fakecompany.com',
     },
     {
       name: 'Carlos Ramirez',
@@ -48,7 +46,6 @@ const App = () => {
       hobbies: ['Soccer', 'Drone Racing', 'Podcasting'],
       img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Logo_of_Twitter.svg',
       imgAlt: 'Twitter logo',
-      ContactUs: 'team@fakecompany.com',
     },
     {
       name: 'Ava Patel',
@@ -58,30 +55,27 @@ const App = () => {
       hobbies: ['Yoga', 'Gardening', 'Writing Fiction'],
       img: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
       imgAlt: 'Netflix logo',
-      ContactUs: 'info@fakecompany.com',
     },
   ];
-  // State to track which section is currently visible
-  // Initialize to 'home' so the welcome message shows first
+
   const [activeSection, setActiveSection] = useState('home');
-  // Function to update the active section state
+
   const handleNavigation = (section) => {
     setActiveSection(section);
   };
-  // Helper function to render the image grid (used in two places now)
+
   const renderImageGrid = () => (
-    <div className="image-grid">
+    <div className="external-links-grid">
       {employeeProfiles.map((profile, index) => (
         <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
       ))}
     </div>
   );
+
   return (
     <div className="app-container">
-      {/* Pass the navigation handler function to Navbar */}
       <Navbar onNavigate={handleNavigation} />
-      {/* --- Conditionally Rendered Sections --- */}
-      {/* Home Section */}
+
       {activeSection === 'home' && (
         <main>
           <h3>Welcome to FutureWave Technologies Inc.</h3>
@@ -95,53 +89,56 @@ const App = () => {
           </p>
         </main>
       )}
-      {/* Company History Section */}
+
       {activeSection === 'companyHistory' && (
         <section className="CompanyHistory">
+           <h2>Company History</h2>
           <CompanyHistory />
-          {/* You might include the image grid here or make it separate */}
-          {/* renderImageGrid() */}
         </section>
       )}
-      {/* Staff Section */}
+
       {activeSection === 'staff' && (
         <section className="EmployData">
-          <h2>Our Staff</h2>
+          
           {employeeProfiles.map((profile, index) => (
-            <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
+            <EmployData
+              key={index}
+              name={profile.name}
+              email={profile.email}
+              hobbies={profile.hobbies}
+            />
           ))}
         </section>
       )}
-      {/* Past Work Section */}
+
       {activeSection === 'pastWork' && (
         <section className="PastWork">
           <h2>Past Work Examples</h2>
           {employeeProfiles.map((profile, index) => (
-            <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
+            <PastWork
+              key={index}
+              name={profile.name}
+              employmentHistory={profile.employmentHistory}
+            />
           ))}
         </section>
       )}
-      {/* Contact Us Section */}
+
       {activeSection === 'contact' && (
         <section className="CompanyInformation">
           <h2>Contact Information</h2>
           <CompanyInformation />
-          {/* This mapping seems to duplicate contact info - maybe adjust? */}
-          {/* {employeeProfiles.map((profile, index) => (
-             <ContactUs key={index} name={profile.name} email={profile.email} />
-           ))} */}
         </section>
       )}
-      {/* External Links Section (showing only the image grid) */}
+
       {activeSection === 'externalLinks' && (
-        <section className="ExternalLinksGrid">
+        <section className="external-links-section">
           <h2>External Links / Partners</h2>
           {renderImageGrid()}
         </section>
       )}
-      {/* Removed the toggle button and the always-visible 'body' div wrapper */}
-      {/* The conditional rendering above handles showing/hiding */}
     </div>
   );
 };
+
 export default App;

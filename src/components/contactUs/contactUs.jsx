@@ -2,10 +2,8 @@ import React from "react";
 const EmployeeInformation = ({ name, email }) => {
   return (
     <>
-
       <div>
-
-        <ul>
+         <ul>
           <p><span>Name: </span>{name}</p>
           <p><span>Email: </span>{email}</p>
         </ul>
