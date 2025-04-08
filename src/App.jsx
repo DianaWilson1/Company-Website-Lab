@@ -1,14 +1,15 @@
+// src/App.jsx
 import { useState } from 'react';
 import './App.css';
 import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
 import CompanyInformation from "./components/contactUs/companyInformation.jsx";
-import ContactUs from './components/contactUs/contactUs.jsx';
 import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
 import Navbar from "./components/navbar/navbar.jsx";
 import PastWork from './components/pastWork/pastWork.jsx';
 import EmployData from './components/staff/staff.jsx';
 const App = () => {
   const employeeProfiles = [
+    // Keep your employeeProfiles array as is
     {
       name: 'Jane Doe',
       address: '123 Innovation Way, San Francisco, CA 94107',
@@ -60,68 +61,86 @@ const App = () => {
       ContactUs: 'info@fakecompany.com',
     },
   ];
-  // State to control the visibility of the 'body' div
-  const [isVisible, setIsVisible] = useState(true); // Start with the div visible
-  // Function to toggle the visibility state
-  const toggleVisibility = () => {
-    setIsVisible(prevIsVisible => !prevIsVisible); // Toggle the boolean value
+  // State to track which section is currently visible
+  // Initialize to 'home' so the welcome message shows first
+  const [activeSection, setActiveSection] = useState('home');
+  // Function to update the active section state
+  const handleNavigation = (section) => {
+    setActiveSection(section);
   };
-  // src/App.jsx
-
-  // const handleSubmit = (event) => {
-  //   // Prevent default event behavior
-  //   event.preventDefault();
-  //   console.log('We no longer navigate away from this page');
-  // };
-
-  // const handleChange = (event) => {
-  //   setCityInput(event.target.value);
-  // };
+  // Helper function to render the image grid (used in two places now)
+  const renderImageGrid = () => (
+    <div className="image-grid">
+      {employeeProfiles.map((profile, index) => (
+        <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+      ))}
+    </div>
+  );
   return (
     <div className="app-container">
-      <Navbar />
-      <main>
-        <h3>Welcome to FutureWave Technologies Inc.</h3>
-        <p>
-          FutureWave Technologies Inc. is a forward-thinking software solutions company
-          dedicated to driving innovation in the digital landscape. Based in California,
-          we specialize in cloud computing, AI-driven platforms, and scalable tech
-          infrastructure for businesses of all sizes. Our mission is to empower
-          organizations through smart, seamless, and future-ready technology —
-          helping them stay ahead in an ever-evolving world.
-        </p>
-      </main>
-      {/* Button to toggle visibility, with dynamic text */}
-      <button onClick={toggleVisibility}>
-        {isVisible ? 'Hide Content' : 'Show Content'}
-      </button>
-      {/* The div to be toggled. Use conditional styling for display */}
-      <div className='body' style={{ display: isVisible ? 'block' : 'none' }}>
+      {/* Pass the navigation handler function to Navbar */}
+      <Navbar onNavigate={handleNavigation} />
+      {/* --- Conditionally Rendered Sections --- */}
+      {/* Home Section */}
+      {activeSection === 'home' && (
+        <main>
+          <h3>Welcome to FutureWave Technologies Inc.</h3>
+          <p>
+            FutureWave Technologies Inc. is a forward-thinking software solutions company
+            dedicated to driving innovation in the digital landscape. Based in California,
+            we specialize in cloud computing, AI-driven platforms, and scalable tech
+            infrastructure for businesses of all sizes. Our mission is to empower
+            organizations through smart, seamless, and future-ready technology —
+            helping them stay ahead in an ever-evolving world.
+          </p>
+        </main>
+      )}
+      {/* Company History Section */}
+      {activeSection === 'companyHistory' && (
         <section className="CompanyHistory">
           <CompanyHistory />
-          <div className="image-grid">
-            {employeeProfiles.map((profile, index) => (
-              <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
-            ))}
-          </div>
+          {/* You might include the image grid here or make it separate */}
+          {/* renderImageGrid() */}
         </section>
+      )}
+      {/* Staff Section */}
+      {activeSection === 'staff' && (
         <section className="EmployData">
+          <h2>Our Staff</h2>
           {employeeProfiles.map((profile, index) => (
             <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
           ))}
         </section>
+      )}
+      {/* Past Work Section */}
+      {activeSection === 'pastWork' && (
         <section className="PastWork">
+          <h2>Past Work Examples</h2>
           {employeeProfiles.map((profile, index) => (
             <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
           ))}
         </section>
+      )}
+      {/* Contact Us Section */}
+      {activeSection === 'contact' && (
         <section className="CompanyInformation">
+          <h2>Contact Information</h2>
           <CompanyInformation />
-          {employeeProfiles.map((profile, index) => (
-            <ContactUs key={index} name={profile.name} email={profile.email} />
-          ))}
+          {/* This mapping seems to duplicate contact info - maybe adjust? */}
+          {/* {employeeProfiles.map((profile, index) => (
+             <ContactUs key={index} name={profile.name} email={profile.email} />
+           ))} */}
         </section>
-      </div>
+      )}
+      {/* External Links Section (showing only the image grid) */}
+      {activeSection === 'externalLinks' && (
+        <section className="ExternalLinksGrid">
+          <h2>External Links / Partners</h2>
+          {renderImageGrid()}
+        </section>
+      )}
+      {/* Removed the toggle button and the always-visible 'body' div wrapper */}
+      {/* The conditional rendering above handles showing/hiding */}
     </div>
   );
 };

@@ -1,21 +1,34 @@
-.image-grid {
+/* externallink.css - Renamed classes to avoid conflicts */
+/* Apply this class to the main container holding your external link images/logos */
+/* Example Usage in ExternalLinks.jsx: <div className="external-links-grid"> ... </div> */
+.external-links-grid {
   display: grid;
+  /* Create columns that are at least 100px wide, but can grow equally (1fr) */
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 5px;
-  padding: 5px;
-  justify-items: center;
+  gap: 15px; /* Increased gap slightly for better spacing */
+  padding: 10px; /* Add some padding around the grid */
+  justify-items: center; /* Center items horizontally within their grid cell */
+  align-items: center; /* Center items vertically within their grid cell */
+  margin: 20px 0; /* Add margin similar to the old .image-grid */
 }
-
-.image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 5px;
-  min-height: 10vh;
+/* Apply this class to the wrapper for EACH individual image/link */
+/* Example Usage: Map produces <div className="external-link-item"> <img .../> </div> */
+.external-link-item {
+  display: flex; /* Use flex to help center the image */
+  align-items: center; /* Vertically center image */
+  justify-content: center; /* Horizontally center image */
+  width: 100%; /* Ensure item takes full width of its grid cell */
+  min-height: 60px; /* Ensure a minimum height for visual consistency */
+  background-color: #F8F9FA; /* Optional: Light background for each item */
+  border-radius: 5px; /* Optional: Rounded corners */
+  padding: 10px; /* Padding around the image inside the item */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Optional: Subtle shadow */
 }
-
-.image img {
-  max-width: 30%;
-  height: auto;
-  object-fit: contain;
+/* Targets the actual <img> tag within each item */
+.external-link-item img {
+  display: block; /* Removes extra space below image */
+  max-width: 100%; /* **CORRECTION:** Allow image to use full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 50px; /* **ADDED:** Set a max-height for uniformity if needed */
+  object-fit: contain; /* Fit image within bounds, maintaining aspect ratio */
 }

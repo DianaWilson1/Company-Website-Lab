@@ -1,17 +1,22 @@
 import React from "react";
 import './navbar.css';
-const Navbar = () => {
+
+const Navbar = ({ onNavigate }) => {
+  const handleClick = (event, section) => {
+    event.preventDefault();
+    onNavigate(section);
+  };
+
   return (
     <nav id="top-navbar">
-      <a href="/">Home</a>
-      <a href="/company-history">Company History</a>
-      <a href="/past-work">Past Work</a>
-      <a href="/stuff">Stuff</a>
-      <a href="/contact-us">Contact Us</a>
-      <a href="/external-links">External Links</a>
-
-
+      <a href="#" onClick={(event) => handleClick(event, 'home')}>Home</a>
+      <a href="#" onClick={(event) => handleClick(event, 'companyHistory')}>Company History</a>
+      <a href="#" onClick={(event) => handleClick(event, 'pastWork')}>Past Work</a>
+      <a href="#" onClick={(event) => handleClick(event, 'staff')}>Staff</a>
+      <a href="#" onClick={(event) => handleClick(event, 'contact')}>Contact Us</a>
+      <a href="#" onClick={(event) => handleClick(event, 'externalLinks')}>External Links</a>
     </nav>
   );
 };
-export default Navbar
+
+export default Navbar;
