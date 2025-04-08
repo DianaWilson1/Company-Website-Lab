@@ -1,15 +1,13 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-
 import './App.css';
 import CompanyHistory from "./components/companyHistory/companyHistory.jsx";
+import CompanyInformation from "./components/contactUs/companyInformation.jsx";
+import ContactUs from './components/contactUs/contactUs.jsx';
 import ExternalLinks from "./components/externalLinks/externalLinks.jsx";
 import Navbar from "./components/navbar/navbar.jsx";
 import PastWork from './components/pastWork/pastWork.jsx';
+import EmployData from './components/staff/staff.jsx';
 
 const App = () => {
-
   const employeeProfiles = [
     {
       name: 'Jane Doe',
@@ -64,25 +62,50 @@ const App = () => {
   ];
 
   return (
-    <>
+    <div className="app-container">
       <Navbar />
-      <h1>Hello world!</h1>
-      <CompanyHistory />
-      <div className="image-grid">
+
+      <main>
+        <h3>Welcome to FutureWave Technologies Inc.</h3>
+        <p>
+          FutureWave Technologies Inc. is a forward-thinking software solutions company
+          dedicated to driving innovation in the digital landscape. Based in California,
+          we specialize in cloud computing, AI-driven platforms, and scalable tech
+          infrastructure for businesses of all sizes. Our mission is to empower
+          organizations through smart, seamless, and future-ready technology —
+          helping them stay ahead in an ever-evolving world.
+        </p>
+      </main>
+
+      <section className="CompanyHistory">
+        <CompanyHistory />
+        <div className="image-grid">
+          {employeeProfiles.map((profile, index) => (
+            <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+          ))}
+        </div>
+      </section>
+
+      <section className="EmployData">
         {employeeProfiles.map((profile, index) => (
-          <ExternalLinks key={index} src={profile.img} alt={profile.imgAlt} />
+          <EmployData key={index} name={profile.name} email={profile.email} hobbies={profile.hobbies} />
         ))}
-      </div>
-      <div>
+      </section>
+
+      <section className="PastWork">
         {employeeProfiles.map((profile, index) => (
           <PastWork key={index} name={profile.name} employmentHistory={profile.employmentHistory} />
         ))}
+      </section>
 
-
-      </div>
-
-    </>
+      <section className="CompanyInformation">
+        <CompanyInformation />
+        {employeeProfiles.map((profile, index) => (
+          <ContactUs key={index} name={profile.name} email={profile.email} />
+        ))}
+      </section>
+    </div>
   );
 };
 
-export default App
+export default App;

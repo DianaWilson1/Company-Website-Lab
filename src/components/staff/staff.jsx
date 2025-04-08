@@ -1,12 +1,11 @@
 import React from 'react';
 
-const EmployData = ({ name, email, employmentHistory, hobbies }) => {
+const EmployData = ({ name, email, hobbies }) => {
   return (
     <>
-      <p><span>Name: </span>{name}</p>
+      <h3>Meet our stuff <span>{name} </span></h3>
       <p><span>Email: </span>{email}</p>
-      <p><span>Employment History: </span>{employmentHistory}</p>
-      <p><span>Hobbies: </span>{hobbies.join(', ')}</p>
+      <p><span>Hobbies: </span>{hobbies}</p>
     </>
   );
 };
