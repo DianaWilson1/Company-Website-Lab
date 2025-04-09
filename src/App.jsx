@@ -26,7 +26,7 @@ const App = () => {
       email: 'john.smith@example.com',
       employmentHistory: 'UX Designer at PixelPerfect, Front-End Dev at UIFlow',
       hobbies: ['Sketching', 'Cycling', 'Indie Film Making'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/f/f4/Spotify_icon.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png',
       imgAlt: 'Apple logo',
     },
     {
