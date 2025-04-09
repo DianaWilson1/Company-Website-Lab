@@ -26,7 +26,7 @@ const App = () => {
       email: 'john.smith@example.com',
       employmentHistory: 'UX Designer at PixelPerfect, Front-End Dev at UIFlow',
       hobbies: ['Sketching', 'Cycling', 'Indie Film Making'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/f/f4/Spotify_icon.svg',
       imgAlt: 'Apple logo',
     },
     {
@@ -44,7 +44,7 @@ const App = () => {
       email: 'carlos.ramirez@example.com',
       employmentHistory: 'Data Analyst at InfoCore, BI Specialist at Dashlytics',
       hobbies: ['Soccer', 'Drone Racing', 'Podcasting'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Logo_of_Twitter.svg',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png',  // YouTube logo
       imgAlt: 'Twitter logo',
     },
     {
@@ -76,7 +76,7 @@ const App = () => {
     <div className="app-container">
       <Navbar onNavigate={handleNavigation} />
 
-    
+
 
       {activeSection === 'home' && (
         <section className="home-section">
@@ -94,7 +94,7 @@ const App = () => {
 
       {activeSection === 'companyHistory' && (
         <section className="CompanyHistory">
-           <h2>Company History</h2>
+          <h2>Company History</h2>
           <CompanyHistory />
         </section>
       )}
@@ -115,7 +115,7 @@ const App = () => {
         </section>
       )}
 
-  
+
       {activeSection === 'pastWork' && (
         <section className="PastWork">
           <h2>Past Work Examples</h2>
